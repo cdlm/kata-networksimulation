@@ -1,41 +1,59 @@
 package a43.lan;
 
-public class Node {
-    String name;
-    Link connection;
+import java.util.HashSet;
+import java.util.Set;
 
-    public Node(String name) {
-        this.name = name;
-    }
-    
+public class Node {
+	protected String name;
+	protected Set<Link> connections;
+
+	public Node(String name) {
+		this.name = name;
+		this.connections = new HashSet<Link>();
+	}
+
 	public String getName() {
 		return name;
 	}
-	
-    public void connect(Link l) {
-		this.connection = l;
+
+	public void connect(Link l) {
+		this.connections.add(l);
 	}
 
 	public void disconnect(Link l) {
-		if (this.connection == l) { this.connection = null; }
+		this.connections.remove(l);
 	}
 
-	public void receiveVia(Link l, Packet p) {
-        if (l != connection) {
-            throw new IllegalArgumentException("Réception d'un paquet ne provenant pas d'un lien connecté");
-        }
-        if (p.isAddressedTo(this)) {
-            System.out.println(name + ": réception de «" + p.getPayload() + "»");
-            this.consume(p);
-        }
-    }
-
-	public void sendVia(Link l, Packet p) {
-		l.transmitFrom(this, p);
+	public Packet originatePacket(Node destination, String payload) {
+		Packet p = new Packet(this, destination, payload);
+		for (Link l : connections) {
+			this.sendVia(l, p);
+			break; // envoi seulement par la 1re connexion trouvée
+		}
+		return p;
 	}
-	
-    public void consume(Packet p) {
-        // TODO
-    }
+
+	public void consume(Packet p) {
+		// TODO
+	}
+
+	public void receiveVia(Link in, Packet p) {
+		if (!connections.contains(in)) {
+			throw new IllegalArgumentException(
+					"Réception d'un paquet ne provenant pas d'un lien connecté");
+		}
+		if (p.isAddressedTo(this)) {
+			p.beReceived();
+			System.out.printf("%s: réception de «%s»\n", this.name,
+					p.getPayload());
+			this.consume(p);
+		} else {
+			// TODO
+		}
+	}
+
+	public void sendVia(Link out, Packet p) {
+		out.transmitFrom(this, p);
+	}
 
 }
