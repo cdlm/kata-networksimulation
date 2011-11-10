@@ -5,9 +5,10 @@ public class Packet {
     Node source, destination;
     String payload;
 
-    public Packet(Node source, Node destination) {
+    public Packet(Node source, Node destination, String payload) {
         this.source = source;
         this.destination = destination;
+        this.payload = payload;
     }
 
     public String getPayload() {
@@ -15,10 +16,10 @@ public class Packet {
 	}
 
 	public boolean isSentBy(Node n) {
-        return source.equals(n.getName());
+        return source == n;
     }
 
     public boolean isAddressedTo(Node n) {
-        return destination.equals(n.getName());
+        return destination == n;
     }
 }

@@ -25,11 +25,15 @@ public class Node {
             throw new IllegalArgumentException("Réception d'un paquet ne provenant pas d'un lien connecté");
         }
         if (p.isAddressedTo(this)) {
-            System.out.println(name + ": réception de " + p.getPayload());
+            System.out.println(name + ": réception de «" + p.getPayload() + "»");
             this.consume(p);
         }
     }
 
+	public void sendVia(Link l, Packet p) {
+		l.transmitFrom(this, p);
+	}
+	
     public void consume(Packet p) {
         // TODO
     }
