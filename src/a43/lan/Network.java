@@ -1,3 +1,8 @@
+package a43.lan;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
 public class Network {
     Collection<Node> nodes;
     Collection<Link> links;

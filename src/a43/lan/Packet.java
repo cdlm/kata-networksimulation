@@ -1,3 +1,5 @@
+package a43.lan;
+
 public class Packet {
 
     Node source, destination;
@@ -8,11 +10,15 @@ public class Packet {
         this.destination = destination;
     }
 
-    public boolean isSentBy(Node n) {
-        return source.equal(n.getName());
+    public String getPayload() {
+		return payload;
+	}
+
+	public boolean isSentBy(Node n) {
+        return source.equals(n.getName());
     }
 
     public boolean isAddressedTo(Node n) {
-        return destination.equal(n.getName());
+        return destination.equals(n.getName());
     }
 }
