@@ -1,4 +1,4 @@
-package a43.lan;
+package a43.lan.core;
 
 public class Packet {
 

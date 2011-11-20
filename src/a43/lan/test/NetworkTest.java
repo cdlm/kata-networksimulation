@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import a43.lan.*;
+import a43.lan.core.*;
 
 public class NetworkTest {
 
