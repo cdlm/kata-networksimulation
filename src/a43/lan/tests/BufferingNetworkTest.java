@@ -17,19 +17,24 @@ public class BufferingNetworkTest {
 	@Before
 	public void setUp() throws Exception {
 		net = new BufferingNetwork();
-		mac = new Workstation("Mac");
-		pc1 = new Workstation("PC1");
-		pc2 = new Workstation("PC2");
-		lpr = new Printer("lpr", 2);
+		
 		hub = new Hub("hub");
-		net.addNode(mac);
-		net.addNode(pc1);
-		net.addNode(pc2);
-		net.addNode(lpr);
 		net.addNode(hub);
+
+		mac = new Workstation("Mac");
+		net.addNode(mac);
 		net.connect(mac, hub);
+
+		pc1 = new Workstation("PC1");
+		net.addNode(pc1);
 		net.connect(pc1, hub);
+		
+		pc2 = new Workstation("PC2");
+		net.addNode(pc2);
 		net.connect(pc2, hub);
+		
+		lpr = new Printer("lpr", 2);
+		net.addNode(lpr);
 		net.connect(lpr, hub);
 	}
 

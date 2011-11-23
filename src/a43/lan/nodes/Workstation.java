@@ -13,8 +13,8 @@ public class Workstation extends Node {
 
 	public void consume(Packet p) {
 		super.consume(p);
-		System.out.printf("%s: working on «%s»\n", name, p.getPayload());
 		nbConsumed++;
+		System.out.printf("%s: working on task %d «%s»\n", name, nbConsumed, p.getPayload());
 	}
 
 	public int getNbConsumed() {

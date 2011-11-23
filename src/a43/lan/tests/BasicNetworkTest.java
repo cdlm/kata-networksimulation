@@ -15,20 +15,34 @@ public class BasicNetworkTest {
 	@Before
 	public void setUp() throws Exception {
 		net = new Network();
-		mac = new Node("Mac");
-		pc1 = new Node("PC1");
-		pc2 = new Node("PC2");
-		lpr = new Node("lpr");
+
 		hub = new Node("hub");
-		net.addNode(mac);
-		net.addNode(pc1);
-		net.addNode(pc2);
-		net.addNode(lpr);
 		net.addNode(hub);
+		
+		mac = new Node("Mac");
+		net.addNode(mac);
 		net.connect(mac, hub);
+
+		pc1 = new Node("PC1");
+		net.addNode(pc1);
 		net.connect(pc1, hub);
+
+		pc2 = new Node("PC2");
+		net.addNode(pc2);
 		net.connect(pc2, hub);
+
+		lpr = new Node("lpr");
+		net.addNode(lpr);
 		net.connect(lpr, hub);
+	}
+
+	@Test
+	public void testScenarioSelfSend() {
+		Packet p = pc2.originatePacket(pc2, "Hello myself!");
+		
+		assertTrue(p.isAddressedTo(pc2));
+		assertTrue(p.originatesFrom(pc2));
+		assertTrue(p.wasReceived());
 	}
 
 	@Test
@@ -40,18 +54,9 @@ public class BasicNetworkTest {
 		assertTrue(p1.originatesFrom(mac));
 		assertTrue(p1.wasReceived());
 		
-		assertTrue(p2.wasReceived());
 		assertTrue(p2.isAddressedTo(mac));
 		assertTrue(p2.originatesFrom(pc1));
-	}
-	
-	@Test
-	public void testScenarioSelfSend() {
-		Packet p = pc2.originatePacket(pc2, "Hello myself!");
-		
-		assertTrue(p.isAddressedTo(pc2));
-		assertTrue(p.originatesFrom(pc2));
-		assertTrue(p.wasReceived());
+		assertTrue(p2.wasReceived());
 	}
 	
 	@Test
