@@ -2,7 +2,7 @@ package a43.lan.tests;
 
 import a43.lan.core.*;
 
-public class JustTwoNodes {
+public class LauncherMacPc {
 
 	public static void main(String[] args) {
 		Node mac = new Node("Mac");
