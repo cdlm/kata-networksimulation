@@ -1,4 +1,4 @@
-package a43.lan.test;
+package a43.lan.tests;
 
 import a43.lan.core.*;
 

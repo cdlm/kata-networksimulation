@@ -20,4 +20,8 @@ public class Link {
 	public void detach() {
 		from.detach(this);
 	}
+	
+	public String toString() {
+		return "Link(" + from.getName() + "->" + to.getName() + ")";
+	}
 }

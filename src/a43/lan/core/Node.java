@@ -34,21 +34,22 @@ public class Node {
 	}
 
 	public void consume(Packet p) {
-		System.out.printf("%s: réception de «%s»\n", this.name, p.getPayload());
-		// TODO
 	}
 
 	public void receiveVia(Link in, Packet p) {
+		System.out.printf("%s: réception de «%s»\n", this.name, p.getPayload());
 		if (p.isAddressedTo(this)) {
 			p.beReceived();
 			this.consume(p);
-		} else {
-			// TODO
 		}
 	}
 
 	public void sendVia(Link out, Packet p) {
 		out.transmit(p);
+	}
+
+	public String toString() {
+		return "[" + name + "]";
 	}
 
 }
