@@ -10,10 +10,14 @@ import a43.lan.core.*;
 public class BasicNetworkTest {
 
 	protected Network net;
-	protected Node mac, pc1, pc2, lpr, hub;
+	protected Node mac, pc1, pc2, lpr, hub, alone;
 
 	@Before
 	public void setUp() throws Exception {
+		// un nœud seul
+		alone = new Node("isolé");
+
+		// le réseau en étoile de l'énoncé
 		net = new Network();
 
 		hub = new Node("hub");
@@ -38,10 +42,12 @@ public class BasicNetworkTest {
 
 	@Test
 	public void testScenarioSelfSend() {
-		Packet p = pc2.originatePacket(pc2, "Hello myself!");
+		// un nœud peut s'envoyer des paquets,
+		// même sans être dans un réseau (local loopback)
+		Packet p = alone.originatePacket(alone, "Hello myself!");
 		
-		assertTrue(p.isAddressedTo(pc2));
-		assertTrue(p.originatesFrom(pc2));
+		assertTrue(p.isAddressedTo(alone));
+		assertTrue(p.originatesFrom(alone));
 		assertTrue(p.wasReceived());
 	}
 
