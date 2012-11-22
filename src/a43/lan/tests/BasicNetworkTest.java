@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import a43.lan.core.*;
+import a43.lan.nodes.Hub;
+import a43.lan.nodes.Printer;
 
 public class BasicNetworkTest {
 
@@ -20,7 +22,7 @@ public class BasicNetworkTest {
 		// le réseau en étoile de l'énoncé
 		net = new Network();
 
-		hub = new Node("hub");
+		hub = new Hub("hub");
 		net.addNode(hub);
 		
 		mac = new Node("Mac");
@@ -35,7 +37,7 @@ public class BasicNetworkTest {
 		net.addNode(pc2);
 		net.connect(pc2, hub);
 
-		lpr = new Node("lpr");
+		lpr = new Printer("lpr", 3);
 		net.addNode(lpr);
 		net.connect(lpr, hub);
 	}
@@ -74,4 +76,15 @@ public class BasicNetworkTest {
 		assertTrue(p.originatesFrom(mac));
 		assertFalse(p.wasReceived());
 	}
+
+	@Test
+	public void testScenarioLprConnected() {
+		Packet p = mac.originatePacket(lpr, "Document à imprimer");
+		
+		assertTrue(p.isAddressedTo(lpr));
+		assertTrue(p.originatesFrom(mac));
+		assertTrue(p.wasReceived());
+		assertEquals(((Printer) lpr).paperStock(), 2);
+	}
+
 }

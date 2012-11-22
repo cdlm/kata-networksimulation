@@ -26,9 +26,13 @@ public class Node {
 
 	public Packet originatePacket(Node destination, String payload) {
 		Packet p = new Packet(this, destination, payload);
-		for (Link l : outgoing) {
-			this.sendVia(l, p);
-			break; // envoi seulement par la 1re connexion trouvée
+		if (p.isAddressedTo(this)) {
+			this.receiveVia(null, p);
+		} else {
+			for (Link l : outgoing) {
+				this.sendVia(l, p);
+				break; // envoi seulement par la 1re connexion trouvée
+			}
 		}
 		return p;
 	}
@@ -41,6 +45,10 @@ public class Node {
 		if (p.isAddressedTo(this)) {
 			p.beReceived();
 			this.consume(p);
+		} else {
+//			for (Link l : outgoing) {
+//				this.sendVia(l,  p);
+//			}
 		}
 	}
 

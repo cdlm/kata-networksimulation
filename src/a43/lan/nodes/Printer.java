@@ -11,6 +11,10 @@ public class Printer extends Node {
 		paperStock = initialPaperStock;
 	}
 	
+	public int paperStock() {
+		return paperStock;
+	}
+
 	public void consume(Packet p) {
 		super.consume(p);
 		print(p);
