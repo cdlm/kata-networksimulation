@@ -1,4 +1,4 @@
-package a43.lan.tests;
+package a43.lan.extensions.tests;
 
 import static org.junit.Assert.*;
 
@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import a43.lan.core.*;
-import a43.lan.experiment.*;
+import a43.lan.extensions.buffering.*;
 import a43.lan.nodes.*;
 
 public class BufferingNetworkTest {

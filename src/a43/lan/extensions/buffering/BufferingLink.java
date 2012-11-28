@@ -1,4 +1,4 @@
-package a43.lan.experiment;
+package a43.lan.extensions.buffering;
 
 import java.util.LinkedList;
 import java.util.Queue;

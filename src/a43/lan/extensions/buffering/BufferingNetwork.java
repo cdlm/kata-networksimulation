@@ -1,4 +1,4 @@
-package a43.lan.experiment;
+package a43.lan.extensions.buffering;
 
 import a43.lan.core.Link;
 import a43.lan.core.Network;
