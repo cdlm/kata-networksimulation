@@ -75,8 +75,8 @@ public class BufferingNetworkTest {
 
 		assertTrue(p.isAddressedTo(pc2));
 		assertTrue(p.originatesFrom(pc2));
-		assertFalse(p.wasReceived());
 
+		// it should arrive after two time ticks max
 		net.timePasses();
 		net.timePasses();
 		assertTrue(p.wasReceived());
