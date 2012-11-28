@@ -1,5 +1,6 @@
 package a43.lan.core;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -42,4 +43,7 @@ public class Network {
 	protected Link makeLink(Node from, Node to) {
 		return new Link(from, to);
 	}
+
+	public Collection<Node> nodes() { return nodes; }
+	public Collection<Link> links() { return links; }
 }

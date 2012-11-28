@@ -16,6 +16,10 @@ public class BasicNetworkTest {
 
 	@Before
 	public void setUp() throws Exception {
+		buildNetwork();
+	}
+
+	public void buildNetwork() {
 		// un nœud seul
 		alone = new Node("isolé");
 
@@ -40,6 +44,11 @@ public class BasicNetworkTest {
 		lpr = new Printer("lpr", 3);
 		net.addNode(lpr);
 		net.connect(lpr, hub);
+	}
+
+	public Network network() {
+		if (net == null) { buildNetwork(); }
+		return net;
 	}
 
 	@Test

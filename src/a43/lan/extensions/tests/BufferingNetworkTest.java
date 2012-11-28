@@ -16,6 +16,10 @@ public class BufferingNetworkTest {
 
 	@Before
 	public void setUp() throws Exception {
+		buildNetwork();
+	}
+
+	public void buildNetwork() {
 		net = new BufferingNetwork();
 
 		hub = new Hub("hub");
@@ -36,6 +40,11 @@ public class BufferingNetworkTest {
 		lpr = new Printer("lpr", 2);
 		net.addNode(lpr);
 		net.connect(lpr, hub);
+	}
+
+	public Network network() {
+		if (net == null) { buildNetwork(); }
+		return net;
 	}
 
 	@Test

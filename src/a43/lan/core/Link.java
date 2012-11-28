@@ -24,4 +24,7 @@ public class Link {
 	public String toString() {
 		return "Link(" + from.getName() + "->" + to.getName() + ")";
 	}
+
+	public Node source() { return from; }
+	public Node destination() { return to; }
 }
