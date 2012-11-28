@@ -37,7 +37,8 @@ public class Node {
 		return p;
 	}
 
-	public void consume(Packet p) {
+	public void sendVia(Link out, Packet p) {
+		out.transmit(p);
 	}
 
 	public void receiveVia(Link in, Packet p) {
@@ -52,8 +53,7 @@ public class Node {
 		}
 	}
 
-	public void sendVia(Link out, Packet p) {
-		out.transmit(p);
+	public void consume(Packet p) {
 	}
 
 	public String toString() {

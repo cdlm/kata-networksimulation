@@ -17,7 +17,7 @@ public class BufferingNetworkTest {
 	@Before
 	public void setUp() throws Exception {
 		net = new BufferingNetwork();
-		
+
 		hub = new Hub("hub");
 		net.addNode(hub);
 
@@ -28,11 +28,11 @@ public class BufferingNetworkTest {
 		pc1 = new Workstation("PC1");
 		net.addNode(pc1);
 		net.connect(pc1, hub);
-		
+
 		pc2 = new Workstation("PC2");
 		net.addNode(pc2);
 		net.connect(pc2, hub);
-		
+
 		lpr = new Printer("lpr", 2);
 		net.addNode(lpr);
 		net.connect(lpr, hub);
@@ -56,8 +56,8 @@ public class BufferingNetworkTest {
 		net.timePasses();
 		assertTrue(p1.wasReceived());
 		assertTrue(p2.wasReceived());
-		assertEquals(1, ((Workstation)pc1).getNbConsumed());
-		assertEquals(1, ((Workstation)mac).getNbConsumed());
+		assertEquals(1, ((Workstation) pc1).getNbConsumed());
+		assertEquals(1, ((Workstation) mac).getNbConsumed());
 	}
 
 	@Test
@@ -67,11 +67,11 @@ public class BufferingNetworkTest {
 		assertTrue(p.isAddressedTo(pc2));
 		assertTrue(p.originatesFrom(pc2));
 		assertFalse(p.wasReceived());
-		
+
 		net.timePasses();
 		net.timePasses();
 		assertTrue(p.wasReceived());
-		assertEquals(1, ((Workstation)pc2).getNbConsumed());
+		assertEquals(1, ((Workstation) pc2).getNbConsumed());
 	}
 
 	@Test
