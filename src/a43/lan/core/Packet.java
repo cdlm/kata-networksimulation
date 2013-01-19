@@ -2,27 +2,31 @@ package a43.lan.core;
 
 public class Packet {
 
-	protected Node source, destination;
-	protected String payload;
+	protected String sourceName, destinationName;
+	protected Object payload;
 	protected boolean received;
 
-	public Packet(Node source, Node destination, String payload) {
-		this.source = source;
-		this.destination = destination;
+	public Packet(Node source, Node destination, Object payload) {
+		this(source.getName(), destination.getName(), payload);
+	}
+
+	public Packet(String srcName, String dstName, Object payload) {
+		this.sourceName = srcName;
+		this.destinationName = dstName;
 		this.payload = payload;
 		this.received = false;
 	}
 
-	public String getPayload() {
+	public Object getPayload() {
 		return payload;
 	}
 
 	public boolean originatesFrom(Node n) {
-		return source == n;
+		return sourceName.equals(n.getName());
 	}
 
 	public boolean isAddressedTo(Node n) {
-		return destination == n;
+		return destinationName.equals(n.getName());
 	}
 
 	public void beReceived() {

@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 public class Network {
@@ -17,6 +18,16 @@ public class Network {
 
 	public void addNode(Node n) {
 		nodes.add(n);
+	}
+
+	public Node getNodeNamed(String name) {
+		for (Node n : nodes) {
+			if (n.getName().equals(name)) {
+				return n;
+			}
+		}
+		throw new NoSuchElementException("Pas de nœud nommé \"" + name
+				+ "\" dans ce réseau");
 	}
 
 	public void connect(Node n1, Node n2) {
@@ -44,6 +55,11 @@ public class Network {
 		return new Link(from, to);
 	}
 
-	public Collection<Node> nodes() { return nodes; }
-	public Collection<Link> links() { return links; }
+	public Collection<Node> nodes() {
+		return nodes;
+	}
+
+	public Collection<Link> links() {
+		return links;
+	}
 }
