@@ -31,7 +31,7 @@ public class BasicNetworkTest {
 	public void buildNetwork() {
 		// {{{ task
 		// un nœud seul, hors du réseau
-		alone = new Node("isolé");
+		alone = new Node("alone");
 
 		net = new Network();
 
@@ -75,16 +75,22 @@ public class BasicNetworkTest {
 
 	@Test
 	public void testNetworkFindsNodesByName() {
-		Node n1 = net.getNodeNamed("Mac");
-		Node n2 = net.getNodeNamed("PC1");
+		Node n1 = net.getNodeNamed(mac.getName());
+		Node n2 = net.getNodeNamed(pc1.getName());
+		Node n3 = net.getNodeNamed(pc2.getName());
+		Node n4 = net.getNodeNamed(impr.getName());
+		Node n5 = net.getNodeNamed(hub.getName());
 
 		assertNotNull(n1);
 		assertNotNull(n2);
+		assertNotNull(n3);
+		assertNotNull(n4);
+		assertNotNull(n5);
 	}
 
 	@Test(expected = NoSuchElementException.class)
 	public void testAloneNotFoundInNetwork() {
-		net.getNodeNamed("alone");
+		net.getNodeNamed(alone.getName());
 	}
 
 	@Test
