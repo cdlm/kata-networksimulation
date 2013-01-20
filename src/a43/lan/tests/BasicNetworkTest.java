@@ -29,7 +29,7 @@ public class BasicNetworkTest {
 
 	/** Construit le réseau en étoile de l'énoncé */
 	public void buildNetwork() {
-		// {{{ solution only
+		// {{{ task
 		// un nœud seul, hors du réseau
 		alone = new Node("isolé");
 
@@ -54,6 +54,10 @@ public class BasicNetworkTest {
 		net.addNode(impr);
 		net.connect(impr, hub);
 		// }}}
+	}
+
+	public static void main(String[] args) {
+		// {{{ task }}}
 	}
 
 	@Before
