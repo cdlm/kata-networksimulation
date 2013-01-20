@@ -9,6 +9,14 @@ public class Link {
 		this.from.attach(this);
 	}
 
+	public Node source() {
+		return from;
+	}
+
+	public Node destination() {
+		return to;
+	}
+
 	public boolean isBetween(Node from, Node to) {
 		return this.from == from && this.to == to;
 	}
@@ -20,11 +28,11 @@ public class Link {
 	public void detach() {
 		from.detach(this);
 	}
-	
+
+	// {{{
+	@Override
 	public String toString() {
 		return "Link(" + from.getName() + "->" + to.getName() + ")";
 	}
-
-	public Node source() { return from; }
-	public Node destination() { return to; }
+	// }}}
 }

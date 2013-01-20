@@ -56,6 +56,14 @@ public class BasicNetworkTest {
 		// }}}
 	}
 
+	/*
+	 * Rien n'empêche de mettre une méthode main() dans une classe de tests
+	 * unitaires :
+	 * 
+	 * - pour lancer le main(): Run as… > Java Application
+	 * 
+	 * - pour lancer les tests : Run as… > JUnit Tests
+	 */
 	public static void main(String[] args) {
 		// {{{ task }}}
 	}

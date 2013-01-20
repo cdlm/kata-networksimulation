@@ -47,17 +47,21 @@ public class Node {
 			p.beReceived();
 			this.consume(p);
 		} else {
-//			for (Link l : outgoing) {
-//				this.sendVia(l,  p);
-//			}
+			// FIXME
+			// for (Link l : outgoing) {
+			// this.sendVia(l, p);
+			// }
 		}
 	}
 
 	public void consume(Packet p) {
 	}
 
+	// {{{
+	@Override
 	public String toString() {
 		return "[" + name + "]";
 	}
+	// }}}
 
 }

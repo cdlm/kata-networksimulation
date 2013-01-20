@@ -36,4 +36,12 @@ public class Packet {
 	public boolean wasReceived() {
 		return received;
 	}
+	
+	// {{{
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
+	}
+	// }}}
 }

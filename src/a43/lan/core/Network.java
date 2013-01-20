@@ -62,4 +62,12 @@ public class Network {
 	public Collection<Link> links() {
 		return links;
 	}
+
+	// {{{
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
+	}
+	// }}}
 }
