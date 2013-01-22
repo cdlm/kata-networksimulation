@@ -8,8 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import a43.lan.core.*;
-import a43.lan.nodes.Hub;
-import a43.lan.nodes.Printer;
+import a43.lan.nodes.Hub; // {{{
+import a43.lan.nodes.Printer; // }}}
 
 public class BasicNetworkTest {
 
@@ -135,7 +135,6 @@ public class BasicNetworkTest {
 		assertTrue(p.isAddressedTo(impr));
 		assertTrue(p.originatesFrom(mac));
 		assertTrue(p.wasReceived());
-		assertEquals(((Printer) impr).paperStock(), 2);
+		assertEquals(((Printer) impr).paperStock(), 2); // {{{ }}}
 	}
-
 }
