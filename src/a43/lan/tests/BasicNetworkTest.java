@@ -89,8 +89,9 @@ public class BasicNetworkTest {
 	}
 
 	@Test(expected = NoSuchElementException.class)
-	public void testAloneNotFoundInNetwork() {
-		net.getNodeNamed(alone.getName());
+	public void testNotAddedNodeNotFoundInNetwork() {
+		Node n = new Node("nobody");
+		net.getNodeNamed(n.getName());
 	}
 
 	@Test
