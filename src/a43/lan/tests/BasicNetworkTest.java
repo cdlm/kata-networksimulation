@@ -32,7 +32,7 @@ public class BasicNetworkTest {
 		// {{{ task
 		// un nœud seul, hors du réseau
 		alone = new Node("alone");
-
+		
 		net = new Network();
 
 		hub = new Hub("hub");
@@ -54,18 +54,6 @@ public class BasicNetworkTest {
 		net.addNode(impr);
 		net.connect(impr, hub);
 		// }}}
-	}
-
-	/*
-	 * Rien n'empêche de mettre une méthode main() dans une classe de tests
-	 * unitaires :
-	 * 
-	 * - pour lancer le main(): Run as… > Java Application
-	 * 
-	 * - pour lancer les tests : Run as… > JUnit Tests
-	 */
-	public static void main(String[] args) {
-		// {{{ task }}}
 	}
 
 	@Before
